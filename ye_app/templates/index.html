@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" >       <!-- link to css file -->
+        <link rel="icon" href="/static/favicon.ico" type="image/x-icon">   
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <audio id="music_player" controls></audio>
+    </head>
+    <body class="body yeezy_text">
+        <header id="mega_header">
+            <h1 class="yeezy_text" padding:0px> YeRiddle</h1>
+        </header>
+        <div class="main_body">
+            <h3 class="yeezy_text">Guess the Ye song</h3>
+            <div class="audio_player">
+                <div class="play_button_container same_line">
+                    <button class="play" id="play_button"></button>
+                </div>
+                <div class="audio_bar_container same_line">
+                    <div id="audio_limit"></div>
+                    <div id="audio_bar"></div>
+                </div>
+            </div>
+            <div class="searching">
+                <div class="search_bar">
+                    <input id="nameInput" name="name" placeholder="Guess a Yeezy song..." autocomplete="off">
+                    <div id="drop_down" class="drop_down"></div>
+                </div>
+                <button id="guess_button">Guess</button>
+            </div>
+            <div class="table_container">
+                <table id="results_table">
+                    <thead>
+                        <tr>
+                            <th>Cover</th>
+                            <th>Album</th>
+                            <th>Song Name</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="guess_results"></div>
+        </div>
+        <div id="side_panel">
+            <button class="panel_button" onclick="togglePanel()">||</button>
+            <div class="cd_container">
+                <div id="cd_case" class="cd_case">
+                    <div id="spinner" class="spinner">
+                        <img id="cd">
+                        <div id="cd_center_container" class="cd_center_container">
+                            <img src="../static/ye_assets/images/cd_center.jpg" id="cd_centre">
+                            <div class="center_shade"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="results">
+                <div id="correct">Game Over</div>
+                <div id="result_song"></div>
+                <div id="result_album"></div>
+                <div id="score"></div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="../static/ye_assets/images/background.jpg" alt="TLOP Listening Party">
+        </div>
+    </body>
+</html>
