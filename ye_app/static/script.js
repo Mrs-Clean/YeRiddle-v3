@@ -5,7 +5,6 @@ let songAnswer, albumAnswer, songPlayer, songProgress, progressBackground, searc
     audioPlaying = false, currentMax = 0;
 let rafID;
 
-
 document.addEventListener('DOMContentLoaded', function(){
     // Plays song when button is clicked
     playButton = document.getElementById('play_button');

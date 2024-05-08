@@ -7,7 +7,8 @@ from ye_game import game
 from dotenv import load_dotenv
 load_dotenv()                                                       # Take environment variables from .env.
 
-app = Flask(__name__)                                               # creates Flask instance
+app = Flask(__name__, static_folder='static')                       # creates Flask instance
+
 ye_game = game.YeGame()                                             # creates ye_game instance
 
 @app.route('/')                                                     # entry point to the game, displaying html webpage
