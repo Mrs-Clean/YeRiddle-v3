@@ -4,6 +4,12 @@ let songAnswer, albumAnswer, songPlayer, songProgress, progressBackground, searc
     resultTable, dropDown, sidePanel, panelButton, cdImage, cdCentre, cdCentreContainer, gameOver = false,
     audioPlaying = false, currentMax = 0;
 let rafID;
+import fs from'fs';
+import path from path;
+
+export function GET(request){
+    let staticPath = path.join(process.cwd(), 'ye_app', 'static');
+}
 
 document.addEventListener('DOMContentLoaded', function(){
     // Plays song when button is clicked
