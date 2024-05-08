@@ -4,12 +4,6 @@ let songAnswer, albumAnswer, songPlayer, songProgress, progressBackground, searc
     resultTable, dropDown, sidePanel, panelButton, cdImage, cdCentre, cdCentreContainer, gameOver = false,
     audioPlaying = false, currentMax = 0;
 let rafID;
-import fs from'fs';
-import path from path;
-
-export function GET(request){
-    let staticPath = path.join(process.cwd(), 'ye_app', 'static');
-}
 
 document.addEventListener('DOMContentLoaded', function(){
     // Plays song when button is clicked
@@ -32,9 +26,9 @@ document.addEventListener('DOMContentLoaded', function(){
             // Load song
             songAnswer = data.song_name; 
             albumAnswer = data.album_name;
-            cdImage.src = `/static/ye_assets/album_covers/${albumAnswer}.jpg`;
+            cdImage.src = `/static/ye_assets/album_covers/${replaceSpace(albumAnswer)}.jpg`;
             console.log('Answer', songAnswer, albumAnswer);
-            songPlayer.src = `/static/ye_assets/music/${songAnswer}.mp3`;
+            songPlayer.src = `/static/ye_assets/music/${replaceSpace(songAnswer)}.mp3`;
     })
     .catch(error => console.error('Error fetching song', error));
 
@@ -132,7 +126,7 @@ function submit_guess(guess_song, guess_album){
     const row = resultTable.insertRow();
     const cell1 = row.insertCell(0);
     var albumCover = document.createElement('img');
-    albumCover.src = `/static/ye_assets/album_covers/${guess_album}.jpg`
+    albumCover.src = `/static/ye_assets/album_covers/${replaceSpace(guess_album)}.jpg`
     cell1.appendChild(albumCover);
     const cell2 = row.insertCell(1);
     cell2.textContent = guess_album;
@@ -220,4 +214,8 @@ function lose(){
     document.getElementById('score').innerHTML = "GAME OVER"
     searchBox.placeholder = "You a dum-dum!";
     finishGame();
+}
+
+function replaceSpace(inputString) {
+    return inputString.replace(/ /g, '_');
 }
