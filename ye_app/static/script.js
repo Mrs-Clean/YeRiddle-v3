@@ -6,6 +6,7 @@ let songAnswer, albumAnswer, songPlayer, songProgress, progressBackground, searc
 let rafID;
 
 document.addEventListener('DOMContentLoaded', function(){
+    window.onload = setupFileUpload; 
     // Plays song when button is clicked
     playButton = document.getElementById('play_button');
     songPlayer = document.getElementById('music_player');
@@ -218,4 +219,33 @@ function lose(){
 
 function replaceSpace(inputString) {
     return inputString.replace(/ /g, '_');
+}
+
+
+// Handle Blob Storage
+function blobUpload(){
+    async function uploadFile(file) {
+        const response = await fetch('/api/get-upload-url');
+        const { uploadUrl } = await response.json();
+
+        const uploadResponse = await fetch(uploadUrl, {
+            method: 'PUT',
+            body: file,
+            headers: {
+                'Content-Type': file.type
+            }
+        });
+
+        if (uploadResponse.ok) {
+            console.log('File uploaded successfully');
+        } else {
+            console.error('Upload failed');
+        }
+    }
+
+    document.querySelector('input[type="file"]').addEventListener('change', event => {
+        if (event.target.files.length > 0) {
+            uploadFile(event.target.files[0]);
+        }
+    });
 }
